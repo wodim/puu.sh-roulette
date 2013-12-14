@@ -3,7 +3,7 @@ from flask import Flask, app, request, render_template, jsonify
 import string, operator, requests, random, socket, httplib
 
 characters = list(string.digits) + list(string.ascii_letters)
-max_tries = 5
+max_tries = 10
 max_puush = 63000000
 socket.setdefaulttimeout(3)
 
