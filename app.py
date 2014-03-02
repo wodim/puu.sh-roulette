@@ -4,14 +4,13 @@ import string, operator, requests, random, socket, httplib
 
 characters = list(string.digits) + list(string.ascii_letters)
 max_tries = 10
-max_puush = 63000000
 socket.setdefaulttimeout(3)
 
 app = Flask(__name__)
 
 def to_id(number):
     id = []
-    
+
     while number > 0:
         id.append(characters[number % len(characters)])
         number /= len(characters)
@@ -21,19 +20,22 @@ def to_id(number):
 def from_id(id):
     str = list(id)
     output = 0
-    
+
     while str:
         output += characters.index(str.pop()) * (len(characters) ** (len(id) - (len(str) + 1)))
-        
+
     return output
+
+min_puush = from_id('50000')
+max_puush = from_id('7geps')
 
 def fetch_url():
     errors = []
     tries = 0
     while tries < max_tries:
         tries += 1
-        
-        url = 'http://puu.sh/%s' % to_id(random.randint(0, max_puush))
+
+        url = 'http://puu.sh/%s' % to_id(random.randint(min_puush, max_puush))
         try:
             r = requests.head(url, timeout=3)
         except (requests.exceptions.RequestException, socket.timeout, httplib.IncompleteRead) as e:
@@ -48,7 +50,7 @@ def fetch_url():
         if not r.headers.get('content-type').startswith('image/'):
             errors.append({'url': url, 'error': 'Not an image'})
             continue
-        
+
         size = round(int(r.headers.get('content-length')) / float(1024), 2)
         return {'error': False, 'image': {'url': url, 'size': size}, 'tries': tries, 'errors': errors}
 
