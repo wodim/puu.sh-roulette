@@ -37,4 +37,6 @@ $(document).ready(function() {
             }
         });
     });
+
+    $("#email").html(atob("d29kaW1Adm9ydGlnYXVudC5uZXQ="));
 });

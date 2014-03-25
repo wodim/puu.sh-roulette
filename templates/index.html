@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
-        <meta property="og:title" content="puu.sh roulette" />
-        <meta name="description" content="puu.sh roulette allows you to view random puu.sh images" />
+        <meta charset="utf-8">
+        <meta property="og:title" content="puu.sh roulette">
+        <meta name="description" content="puu.sh roulette allows you to view random puu.sh images">
         <title>puu.sh roulette</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script src="/static/fetch.js?rofl"></script>
+        <script src="{{ url_for('static', filename='fetch.js') }}"></script>
         <style type="text/css">
             body { font-family: "Arial", sans-serif; font-size: 9pt; color: #555; text-align: center; }
             img#target { max-width: 1000px; max-height: 800px; border: 5px solid #ddd; display: none; }
@@ -15,24 +15,12 @@
             p#errors:hover { opacity: 1; }
             p#errors a { font-weight: bold; }
         </style>
-        <script type="text/javascript">
-
-          var _gaq = _gaq || [];
-          _gaq.push(['_setAccount', 'UA-31682714-1']);
-          _gaq.push(['_trackPageview']);
-
-          (function() {
-             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-          })();
-
-        </script>
-    </head>
     <body>
-        <button id="buzz">Get a new image</button><br />
+        <button id="buzz">Get a new image</button>
         <p id="advice"></p>
-        <a href="#" id="target_anchor" target="_blank"><img id="target" src="#" alt="This shit ain't an image yo" /></a>
+        <a href="#" id="target_anchor" target="_blank"><img id="target" src="#" alt="This shit ain't an image yo"></a>
         <p id="errors"></p>
-    </body>
-</html>
+        <p class="cc">
+          if it's failing too often, please tell me: <span id="email">fucking enable js</span>
+          — <a href="https://github.com/wodim/puu.sh-roulette">code</a>
+        </p>

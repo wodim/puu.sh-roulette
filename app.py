@@ -1,9 +1,13 @@
-# -*- coding: utf-8 -*-
-from flask import Flask, app, request, render_template, jsonify
-import string, operator, requests, random, socket, httplib
+import string
+import requests
+import random
+import socket
+import httplib
+
+from flask import Flask, render_template, jsonify
 
 characters = list(string.digits) + list(string.ascii_letters)
-max_tries = 10
+max_tries = 20
 socket.setdefaulttimeout(3)
 
 app = Flask(__name__)
@@ -27,7 +31,7 @@ def from_id(id):
     return output
 
 min_puush = from_id('50000')
-max_puush = from_id('7geps')
+max_puush = from_id('7J000')
 
 def fetch_url():
     errors = []
@@ -38,7 +42,7 @@ def fetch_url():
         url = 'http://puu.sh/%s' % to_id(random.randint(min_puush, max_puush))
         try:
             r = requests.head(url, timeout=3)
-        except (requests.exceptions.RequestException, socket.timeout, httplib.IncompleteRead) as e:
+        except (requests.exceptions.RequestException, socket.timeout, httplib.IncompleteRead):
             errors.append({'url': url, 'error': 'Request timeout, socket timeout or incomplete read'})
 
         if r.status_code != requests.codes.ok:
@@ -65,5 +69,5 @@ def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.debug = False
-    app.run(host = '0.0.0.0', port = 1488)
+    app.debug = True
+    app.run(host='0.0.0.0', port=1488)
