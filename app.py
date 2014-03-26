@@ -56,9 +56,9 @@ def fetch_url():
             continue
 
         size = round(int(r.headers.get('content-length')) / float(1024), 2)
-        return {'error': False, 'image': {'url': url, 'size': size}, 'tries': tries, 'errors': errors}
+        return {'success': True, 'image': {'url': url, 'size': size}, 'tries': tries, 'errors': errors}
 
-    return {'error': True, 'tries': tries, 'errors': errors}
+    return {'success': False, 'tries': tries, 'errors': errors}
 
 @app.route('/random/')
 def get_random():
