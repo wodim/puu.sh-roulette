@@ -40,6 +40,7 @@ def fetch_url():
         tries += 1
 
         url = 'http://puu.sh/%s' % to_id(random.randint(min_puush, max_puush))
+        r = None
         try:
             r = requests.head(url, timeout=3)
         except (requests.exceptions.RequestException, socket.timeout, httplib.IncompleteRead):

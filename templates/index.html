@@ -6,7 +6,7 @@
         <meta name="description" content="puu.sh roulette allows you to view random puu.sh images. fast, no ads, no bullshit.">
         <title>puu.sh roulette</title>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script src="{{ url_for('static', filename='fetch.2.js') }}"></script>
+        <script src="{{ url_for('static', filename='fetch.2.js') }}?rofl"></script>
         <link rel="shortcut icon" href="//vortigaunt.net/favicon.ico" type="image/x-png">
         <style type="text/css">
             body { font-family: "Arial", sans-serif; font-size: 9pt; color: #555; text-align: center; }
@@ -19,7 +19,7 @@
     <body>
         <button id="buzz">Get a new image</button>
         <p id="advice"></p>
-        <a href="#" id="target_anchor" target="_blank"><img id="target" src="#" alt="This shit ain't an image yo"></a>
+        <a href="#" id="target_anchor" target="_blank"><img id="target" src="{{ url_for('static', filename='error.gif') }}" alt></a>
         <p id="errors"></p>
         <p class="cc">
           if it's failing too often, please tell me: <span id="email">fucking enable js</span>
