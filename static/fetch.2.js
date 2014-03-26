@@ -1,6 +1,5 @@
 pr = {
     form_enable: function() {
-        console.log("called");
         $("#buzz").removeAttr("disabled");
         $("#buzz").html("Another one!");
     },
@@ -28,7 +27,9 @@ pr = {
                 $("#advice").html("Try again.");
                 $("#target_anchor").attr("href", "#");
                 $("#target").attr("src", "/static/error.gif");
+            }
 
+            if (json.errors.length) {
                 $("#errors").html("<strong>Previous errors:</strong>");
                 for (index = 0; index < json.errors.length; ++index) {
                     var my_url = json.errors[index].url;
