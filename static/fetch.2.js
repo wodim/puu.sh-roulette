@@ -2,6 +2,7 @@ pr = {
     form_enable: function() {
         $("#buzz").removeAttr("disabled");
         $("#buzz").html("Another one!");
+        $("#buzz").focus();
     },
     form_disable: function() {
         $("#buzz").attr("disabled", "disabled");
@@ -43,6 +44,7 @@ pr = {
 
 $(document).ready(function() {
     $("#buzz").bind("click", pr.fetch);
+    $("#buzz").focus();
     $("#anchor").load(pr.form_enable);
     $("#email").html(atob("d29kaW1Adm9ydGlnYXVudC5uZXQ="));
 });
