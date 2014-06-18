@@ -30,8 +30,8 @@ def from_id(id):
 
     return output
 
-min_puush = from_id('50000')
-max_puush = from_id('7J000')
+min_puush = from_id('90000')
+max_puush = from_id('9z000')
 
 def fetch_url():
     errors = []

@@ -46,5 +46,5 @@ $(document).ready(function() {
     $("#buzz").bind("click", pr.fetch);
     $("#buzz").focus();
     $("#anchor").load(pr.form_enable);
-    $("#email").html(atob("d29kaW1Adm9ydGlnYXVudC5uZXQ="));
+    $("#email").html(atob("d29kaW1Ab3V0bG9vay5jb20"));
 });
